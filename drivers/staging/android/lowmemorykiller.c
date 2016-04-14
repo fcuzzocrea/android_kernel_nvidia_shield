@@ -48,6 +48,7 @@
 #endif
 #include <linux/swap.h>
 #include <linux/fs.h>
+#include <linux/zcache.h>
 #include <linux/cpuset.h>
 #include <linux/vmpressure.h>
 
@@ -378,8 +379,8 @@ static unsigned long lowmem_scan(struct shrinker *s, struct shrink_control *sc)
 		;
 
 	if (global_page_state(NR_SHMEM) + total_swapcache_pages() <
-		global_page_state(NR_FILE_PAGES))
-		other_file = global_page_state(NR_FILE_PAGES) -
+		global_page_state(NR_FILE_PAGES) + zcache_pages())
+		other_file = global_page_state(NR_FILE_PAGES) + zcache_pages() -
 						global_page_state(NR_SHMEM) -
 						global_page_state(NR_UNEVICTABLE) -
 						total_swapcache_pages();
@@ -477,6 +478,7 @@ static unsigned long lowmem_scan(struct shrinker *s, struct shrink_control *sc)
 				"   Total reserve is %ldkB\n" \
 				"   Total free pages is %ldkB\n" \
 				"   Total file cache is %ldkB\n" \
+                               "   Total zcache is %ldkB\n" \
 				"   GFP mask is 0x%x\n",
 			     selected->comm, selected->pid,
 			     selected_oom_score_adj,
@@ -490,6 +492,7 @@ static unsigned long lowmem_scan(struct shrinker *s, struct shrink_control *sc)
 			     totalreserve_pages * (long)(PAGE_SIZE / 1024),
 			     global_page_state(NR_FREE_PAGES) *
 				(long)(PAGE_SIZE / 1024),
+                            (long)zcache_pages() * (long)(PAGE_SIZE / 1024),
 			     global_page_state(NR_FILE_PAGES) *
 				(long)(PAGE_SIZE / 1024),
 			     sc->gfp_mask);
