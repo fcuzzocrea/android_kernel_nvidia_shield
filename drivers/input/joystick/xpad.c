@@ -1362,6 +1362,9 @@ static void xpad_deinit_input(struct usb_xpad *xpad)
 		xpad->input_created = false;
 		xpad_led_disconnect(xpad);
 		input_unregister_device(xpad->dev);
+	if (intf->cur_altsetting->desc.bNumEndpoints != 2)
+		return -ENODEV;
+
 	}
 }
 
