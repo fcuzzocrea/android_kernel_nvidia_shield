@@ -126,6 +126,8 @@
 		nvidia,charging-supported;
 		nvidia,turn-off-vbus-in-lp0;
 		nvidia,dcp-current-limit-ua = <3000000>;
+		nvidia,qc2-input-voltage = <TEGRA_USB_QC2_9V>;
+		nvidia,qc2-current-limit-ua = <2000000>;
 	};
 
 	watchdog@60005100 {
