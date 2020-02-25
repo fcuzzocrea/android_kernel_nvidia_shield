@@ -1,0 +1,39 @@
+reverts :
+[l4t-prerebase d96b575fe5d] Revert "ALSA: timer: Call notifier in the same spinlock"
+
+SKIPPED: 
+Already applied by nvidia
+- a4a4f1cd733... compiler-gcc: integrate the various compiler-gcc[345].h files
+
+Unsure about resolution
+6e5ae963b52... PM / devfreq: Fix incorrect type issue.
+dd2421b5edb... posix_acl: Clear SGID bit when setting file permissions
+
+ 
+
+CONFLICTS 
+
+2ec6dac110f... tracing: Fix trace_printk() to print when not using bprintk
+0579a12791e... sched/cputime: Fix steal time accounting vs. CPU hotplug
+903c5a46a86... USB: fix up faulty backports
+82365cf6073... cdc_ncm: do not call usbnet_link_change from cdc_ncm_bind
+0378ecf174b... Input: xpad - validate USB endpoint count during probe
+9691eac5593... mm: remove gup_flags FOLL_WRITE games from __get_user_pages()
+0b3918fc435... crypto: skcipher - Fix blkcipher walk OOM crash
+5b4918cca91... ARM: sa1100: clear reset status prior to reboot
+e5471defd7e... arm64: avoid returning from bad_mode
+d65df5171a2... arm64: spinlocks: implement smp_mb__before_spinlock() as smp_mb()
+5c82a634f9d... usb: gadget: function: u_ether: don't starve tx request queue
+tcp: properly scale window in tcp_v[46]_reqsk_send_ack()
+98db9446275... cfg80211: limit scan results cache size
+f98c2c40294... lib/genalloc.c: start search from start of chunk
+6800d881c1d... char: Drop bogus dependency of DEVPORT on !M68K
+60f704bdd70... ping: implement proper locking
+2f954a62497... dccp/tcp: do not inherit mc_list from parent
+408d8245b80... ext4: use more strict checks for inodes_per_block on mount
+48a5889bfdf... ext4: return EROFS if device is r/o and journal replay is needed
+e2c835ec044... Input: xpad - use correct product id for x360w controllers
+c0dd8fff251... char: lack of bool string made CONFIG_DEVPORT always on
+1ad9a25dd06... mm: larger stack guard gap, between vmas
+69ddef7b41f... udp: consistently apply ufo or fragmentation
+
