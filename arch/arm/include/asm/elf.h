@@ -8,6 +8,7 @@
  */
 #include <asm/ptrace.h>
 #include <asm/user.h>
+#include <asm/auxvec.h>
 
 struct task_struct;
 
